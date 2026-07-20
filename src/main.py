@@ -14,10 +14,14 @@ from src.recommender import load_songs, recommend_songs
 
 def main() -> None:
     songs = load_songs("data/songs.csv") 
-    print(f"Loaded songs: {len(songs)}")
+    
     # Starter example profile
-    user_prefs = {"genre": "classical", "mood": "nostalgic", "energy": 0.6}
-
+    user_prefs =  {"genre": "pop", "mood": "happy", "energy": 1.6}
+    """
+    [{"genre": "Pop", "mood": "Happy", "energy": 0.8},
+    {"genre": "jazz", "mood": "sad", "energy": 0.95},
+    {"genre": "pop", "mood": "happy", "energy": 1.6}]
+    """
     recommendations = recommend_songs(user_prefs, songs, k=5)
 
     print("\nTop Recommendations")

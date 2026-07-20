@@ -61,9 +61,9 @@ def load_songs(csv_path: str) -> List[Dict]:
             songs.append(row)
     return songs
 
-GENRE_WEIGHT = 2.0
+GENRE_WEIGHT = 1.0
 MOOD_WEIGHT = 1.0
-ENERGY_WEIGHT = 1.0
+ENERGY_WEIGHT = 2.0
 ACOUSTIC_WEIGHT = 0.5
 ACOUSTIC_THRESHOLD = 0.5
 
