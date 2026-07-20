@@ -29,6 +29,20 @@ Some prompts to answer:
 
 You can include a simple diagram or bullet list if helpful.
 
+The system will use content-based filtering instead of collaborative-filtering, since this system does not have the data of other users. This simple music recommender will use the features of the data, such as genre, mood, acousticness, and energy to score individual songs. There will be weights tailored to each feature, with more important features having heavier weights, such as genre. Since the user already has its own data of preferences, exact matching with preferred types of genre and mood are strong positive indicators. The Song object and UserProfile object will both use genre, mood, and energy since both objects carries these four attributes. 
+
+flowchart TD
+    Start(("●")) --> A(["Load user_prefs<br/>(genre, mood, target_energy)"])
+    A --> B(["load_songs(csv_path)<br/>→ list of songs"])
+    B --> C(["Get next song from list"])
+    C --> D(["score_song(user_prefs, song)<br/>→ (score, reasons)"])
+    D --> E(["Add (song, score, reasons)<br/>to results list"])
+    E --> F{"More songs<br/>left?"}
+    F -->|yes| C
+    F -->|no| G(["Sort results by score,<br/>descending"])
+    G --> H(["Take top K results"])
+    H --> End(("◎"))
+
 ---
 
 ## Getting Started
@@ -105,6 +119,7 @@ Examples:
 
 You will go deeper on this in your model card.
 
+The recommender may over favor one genre due to its weight, thus likely not recommending a diverse set of songs that are different compared to the user's usual go-to playlist and preferred genres.
 ---
 
 ## Reflection

@@ -14,9 +14,9 @@ from recommender import load_songs, recommend_songs
 
 def main() -> None:
     songs = load_songs("data/songs.csv") 
-
+    print(f"Loaded songs: {len(songs)}")
     # Starter example profile
-    user_prefs = {"genre": "pop", "mood": "happy", "energy": 0.8}
+    user_prefs = {"genre": "classical", "mood": "nostalgic", "energy": 0.6}
 
     recommendations = recommend_songs(user_prefs, songs, k=5)
 
